@@ -1,0 +1,35 @@
+body {
+    background-image: url("../images/main-background.jpg");
+    background-size: 1920px 1080px;
+}
+
+#header,
+.text {
+	font-family: 'Teko', sans-serif;
+}
+
+#header {
+    color: white;
+    text-align: right;
+    font-size: 50px;
+}
+
+.text {
+	color: white;
+    text-align: left;
+    font-size: 35px;
+}
+
+.char-background {
+	border: solid green 2px;
+	padding: 10px;
+	background: white;
+	text-align: center;
+
+}
+
+.image {
+
+	display: block;
+	position: relative;
+}
