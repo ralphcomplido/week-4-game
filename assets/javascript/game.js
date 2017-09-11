@@ -150,19 +150,28 @@ showCharacters(starWarsGame, '#characters');
 
         showCharacters(currSelectedCharacter, 'enemyDamage');
  if (currSelectedCharacter.health <= 0) {
+     currSelectedCharacter.health = 0;
+     showCharacters(currSelectedCharacter, 'enemyDamage');
           // renderMessage("clearMessage");
-          // restartGame("You have been defeated...GAME OVER!!!");
+          restartGame();
           $("#attack-button").unbind("click");
         }
     } 
    
-        
+
         else {
         showCharacters(currDefender, 'enemyDefeated');
         killCount++;
     }
 });
 
+ var restartGame = function() {
+    // restart button will appear if the player win or lose
+    var restart = $('<button class="btn">Restart</button>').click(function() {
+      location.reload();
+    });
+    $("#restart").append(restart);
+};
 });
 
     
