@@ -27,6 +27,8 @@ body {
 	text-align: center;
 	font-size: 20px;
 	font-family: 'Teko', sans-serif;
+	width: 225px;
+	margin-right: 10px;
 
 }
 
@@ -34,4 +36,23 @@ body {
 
 	display: block;
 	position: relative;
+}
+
+#characters, #enemies, #defender {
+	height: 230px;
+	display: flex;
+
+}
+
+#attack-button {
+	visibility: hidden;
+}
+
+.enemy {
+	background: red;
+}
+
+.target-enemy {
+	background: black;
+	color: white;
 }

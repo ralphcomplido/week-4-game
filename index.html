@@ -10,7 +10,7 @@
     <!-- Bootstrap File -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- JQuery -->
-   
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -28,25 +28,34 @@
         <div class="row">
             <div class="col-md-12">
                 <p class="text">Your Character</p>
-                <div class="your-character"></div>
+                <div id="your-character"></div>
             </div>
         </div>
         <!--  Enemies Available to attack -->
         <div class="row">
             <div class="col-md-12">
                 <p class="text">Enemies Available To Attack</p>
-                <div class="enemies"></div>
+                <div id="enemies"></div>
             </div>
         </div>
+        <div class="row">
+        <div class="col-md-12">
+        <p class="text" id="fight-section">Fight Section</p>
+            <button class="btn" id="attack-button">Attack</button>
+            
+        </div>   
+    
+    </div>
         <!-- Defender -->
         <div class="row">
             <div class="col-md-12">
                 <p class="text">Defender</p>
-                <div class="defender"></div>
+                <div id="defender"></div>
             </div>
         </div>
     </div>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <div id="gameMessage"></div>
+	
     <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 
