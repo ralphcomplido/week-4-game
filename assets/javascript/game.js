@@ -73,7 +73,6 @@ var victory = new Audio('assets/audio/victory.mp3')
          var newMessage = $("<div>").text(message);
          gameMesageSet.append(newMessage);
 
-         }
      };
 
      var showCharacters = function(charObj, charSection) {
