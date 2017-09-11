@@ -34,15 +34,19 @@
              var currSelectedCharacter;
              var currDefender;
              var turnCounter = 1;
+             var killCount = 0;
 
-                // make character
+              // make character
              var makeCharacter = function(character, charPosition, makeChar) {
+                // make button, show name, image, health 
                  var charBtn = $("<button class='character char-background' data-name='" + character.name + "'>");
                  var charName = $("<div class='character-name'>").text(character.name);
                  var charImage = $("<img alt='image' class='character-image' height=150 width=200>").attr("src", character.picture);
                  var charHealth = $("<div class='character-health'>").text(character.health);
                  charBtn.append(charName).append(charImage).append(charHealth);
                  $(charPosition).append(charBtn);
+
+                // assign class if according to user option
                  if (makeChar == 'enemy') {
                      $(charBtn).addClass('enemy');
                  } else if (makeChar == 'defender') {
@@ -80,7 +84,7 @@
         if ($('#defender').children().length === 0) {
           showCharacters(name, '#defender');
           $(this).hide();
-          // renderMessage("clearMessage");
+         
         }
       });
     }
@@ -98,6 +102,16 @@
     if (charSection == 'playerDamage') {
       $('#defender').empty();
       makeCharacter(charObj, '#defender', 'defender');
+    }
+
+    if (charSection == 'enemyDamage') {
+      $('#your-character').empty();
+      makeCharacter(charObj, '#your-character', '');
+    }
+
+    if (charSection == 'enemyDefeated') {
+      $('#defender').empty();
+  
     }
 };
 showCharacters(starWarsGame, '#characters');
@@ -131,6 +145,21 @@ showCharacters(starWarsGame, '#characters');
  if (currDefender.health > 0) {
         //enemy not dead keep playing
         showCharacters(currDefender, 'playerDamage');
+
+        currSelectedCharacter.health = currSelectedCharacter.health - currDefender.counter;
+
+        showCharacters(currSelectedCharacter, 'enemyDamage');
+ if (currSelectedCharacter.health <= 0) {
+          // renderMessage("clearMessage");
+          // restartGame("You have been defeated...GAME OVER!!!");
+          $("#attack-button").unbind("click");
+        }
+    } 
+   
+        
+        else {
+        showCharacters(currDefender, 'enemyDefeated');
+        killCount++;
     }
 });
 
