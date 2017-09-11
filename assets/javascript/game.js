@@ -1,11 +1,13 @@
  $(document).ready(function() {
 
+// Audio Variables
 var sword = new Audio('assets/audio/lightsaber.mp3');
 var noEnemy = new Audio('assets/audio/no-enemy.mp3');
 var backgroundMusic = new Audio('assets/audio/starwars-music.mp3');
 var lost = new Audio('assets/audio/you-lose.mp3');
 var victory = new Audio('assets/audio/victory.mp3')
 
+// Create Characters
      var starWarsGame = {
          'Obi-Wan Kenobi': {
              name: "Obi-Wan Kenobi",
@@ -36,12 +38,15 @@ var victory = new Audio('assets/audio/victory.mp3')
              counter: 30
          }
      };
+
+     // Declare Variables for game function
      var combatants = [];
      var currSelectedCharacter;
      var currDefender;
      var turnCounter = 1;
      var killCount = 0;
 
+     // Play Background Music
      backgroundMusic.play();
      // make character
      var makeCharacter = function(character, charPosition, makeChar) {
@@ -62,13 +67,12 @@ var victory = new Audio('assets/audio/victory.mp3')
          }
      };
 
+     // Show message variable for all messages
      var showMessage = function(message) {
          var gameMesageSet = $("#game-message");
          var newMessage = $("<div>").text(message);
          gameMesageSet.append(newMessage);
 
-         if (message == 'clearMessage') {
-             gameMesageSet.text('');
          }
      };
 
@@ -82,11 +86,13 @@ var victory = new Audio('assets/audio/victory.mp3')
                  }
              }
          }
+         // chosen character
          if (charSection == '#your-character') {
              makeCharacter(charObj, charSection, '');
              $('#attack-button').css('visibility', 'visible');
          }
 
+         // Choose enemies
          if (charSection == '#enemies') {
 
              for (var i = 0; i < charObj.length; i++) {
@@ -107,7 +113,7 @@ var victory = new Audio('assets/audio/victory.mp3')
                  }
              });
          }
-
+         // Enemy to fight
          if (charSection == '#defender') {
              $(charSection).empty();
              for (var i = 0; i < combatants.length; i++) {
@@ -118,31 +124,31 @@ var victory = new Audio('assets/audio/victory.mp3')
              }
          }
 
+         // update health according to damage for enemy
          if (charSection == 'playerDamage') {
              $('#defender').empty();
              makeCharacter(charObj, '#defender', 'defender');
          }
-
+          // update health according to damage for your character
          if (charSection == 'enemyDamage') {
              $('#your-character').empty();
              makeCharacter(charObj, '#your-character', '');
          }
-
+         // clear enemy section when defeated
          if (charSection == 'enemyDefeated') {
              $('#defender').empty();
 
          }
      };
      showCharacters(starWarsGame, '#characters');
-     //render player character
 
 
      $(document).on('click', '.character', function() {
          name = $(this).data('name');
-         //if no player char has been selected
+         // click function to append chosen character to the class
          if (!currSelectedCharacter) {
              currSelectedCharacter = starWarsGame[name];
-             console.log(currSelectedCharacter);
+          // loop to append enemy options
              for (var key in starWarsGame) {
                  if (key != name) {
                      combatants.push(starWarsGame[key]);
@@ -150,7 +156,6 @@ var victory = new Audio('assets/audio/victory.mp3')
              }
              $("#characters").hide();
              showCharacters(currSelectedCharacter, '#your-character');
-             //this is to render all characters for user to choose fight against
              showCharacters(combatants, '#enemies');
              $("#game-message").empty();
              showMessage("You Chose " + currSelectedCharacter.name + "!");
@@ -158,7 +163,7 @@ var victory = new Audio('assets/audio/victory.mp3')
      });
 
      $("#attack-button").on("click", function() {
-
+            // attack enemy
          if ($('#defender').children().length !== 0) {
             sword.play();
              var attackMessage = "You attacked " + currDefender.name + " for " + (currSelectedCharacter.damage * turnCounter) + " damage.";
@@ -177,7 +182,7 @@ var victory = new Audio('assets/audio/victory.mp3')
                  showMessage(attackMessage);
                  showMessage(counterAttackMessage);
 
-
+                 // if lost
                  if (currSelectedCharacter.health <= 0) {
                      currSelectedCharacter.health = 0;
                      $("#game-message").empty();
@@ -191,11 +196,12 @@ var victory = new Audio('assets/audio/victory.mp3')
 
 
              } else {
+                // add kills
                  showCharacters(currDefender, 'enemyDefeated');
                  $("#game-message").empty();
                  showMessage("You Defeated " + currDefender.name + "! Choose Another Enemy.");
                  killCount++;
-
+                 // if won
                  if (killCount >= 3) {
                      $("#game-message").empty();
                      showMessage("You are Victorious Master Jedi! Play Again!");
@@ -206,7 +212,10 @@ var victory = new Audio('assets/audio/victory.mp3')
                  }
              }
 
-         } else {
+         } 
+
+         // no enemy
+         else {
             $("#game-message").empty();
             noEnemy.play();
             showMessage("No Enemy here.");

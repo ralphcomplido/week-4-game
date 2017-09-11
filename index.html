@@ -10,21 +10,19 @@
     <!-- Bootstrap File -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- JQuery -->
-   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
-
     <div class="container">
-        <!-- Header -->
+        <!-- Header. Choose Character Area-->
         <div class="row">
             <div class="col-md-12">
                 <h1 id="header">Star Wars RPG</h1>
-                <!-- <img class="backgroundtest" src="assets/images/darth-maul.jpg" height="200" width="300"> -->
                 <div id="characters"></div>
             </div>
         </div>
-        <!-- Character -->
+        <!-- Your Character -->
         <div class="row">
             <div class="col-md-12">
                 <p class="text">Your Character</p>
@@ -38,14 +36,13 @@
                 <div id="enemies"></div>
             </div>
         </div>
+        <!-- Attack Button -->
         <div class="row">
-        <div class="col-md-12">
-        <p class="text" id="fight-section">Fight Section</p>
-            <button class="btn" id="attack-button">Attack</button>
-            
-        </div>   
-    
-    </div>
+            <div class="col-md-12">
+                <p class="text" id="fight-section">Fight Section</p>
+                <button class="btn" id="attack-button">Attack</button>
+            </div>
+        </div>
         <!-- Defender -->
         <div class="row">
             <div class="col-md-12">
@@ -53,15 +50,16 @@
                 <div id="defender"></div>
             </div>
         </div>
-         <div class="row">
+        <!-- Restart Game -->
+        <div class="row">
             <div class="col-md-12">
                 <div id="restart"></div>
             </div>
         </div>
-        <div id="game-message"><h1>The Quest to be the Master Jedi has started!</h1></div>
+        <!-- Game Message -->
+        <div id="game-message">
+            <h1>The Quest to be the Master Jedi has started!</h1></div>
     </div>
-    <div id="gameMessage"></div>
-	
     <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 
